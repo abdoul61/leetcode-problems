@@ -25,9 +25,3 @@ def fn(s: str,t:str) -> bool:
 s = "anagram"
 t = "nagaram"
 print(fn(s,t))
-
-
-
-         
-
-
