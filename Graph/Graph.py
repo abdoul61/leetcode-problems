@@ -10,8 +10,8 @@ import queue as Q
 class Graph:
     def __init__(self,vertices):
         self._vertices = vertices
-
         self._adjMat = np.zeros((vertices,vertices))
+        self._visited = [0] * self._vertices
         
 
     def insert_edge(self,u,v,x=1):
@@ -63,6 +63,7 @@ class Graph:
         return count 
 
 # Method to traverse the entire graph node by node 
+# Breath-First-Search
     def Breath_First_search(self,s):
         i = s
         q = Q.Queue()
@@ -78,6 +79,15 @@ class Graph:
                     print(j,end=' ')
                     q.put(j)
                     visited[j] = 1
+
+# Depth-Fisrt-search Alogrithm
+    def Depth_First_search(self,s):
+        if self._visited[s] == 0:
+            print(s,end=' ')
+            self._visited[s] = 1
+            for j in range(self._vertices):
+                if self._adjMat[s][j] == 1 and self._visited[j] == 0:
+                    self.Depth_First_search(j)
 
 # Method to print the entire graph
     def display_adjMat(self):
@@ -104,20 +114,25 @@ G.insert_edge(5,3)
 G.insert_edge(6,3)
 G.display_adjMat()
 
-print('BFS')
-G.Breath_First_search(0)
-print()
+# print('BFS')
+# G.Breath_First_search(0)
+# print()
 
-G.Breath_First_search(4)
+# G.Breath_First_search(4)
+# print()
 
-
-
-
-
-
+print('DFS')
+G.Depth_First_search(4)
 
 
-# Breath-First-Search
+
+
+
+
+
+
+
+
 
 
 
